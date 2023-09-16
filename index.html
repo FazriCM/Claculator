@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <title>Claculator</title>
+    <style>
+      .blk-1 {
+        width: 600px;
+        height: 550px;
+        background-color: black;
+        margin-top: 55px;
+        border-radius: 20px;
+      }
+      /* .blk-2 {
+        width: 520px;
+        height: 100px;
+        border-radius: 20px;
+        background-color: grey;
+      } */
+
+      .blk-3 {
+        width: 120px;
+        height: 60px;
+        margin: 5px;
+        border-radius: 20px;
+        background-color: slategray;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body style="display: flex; justify-content: center; align-items: center">
+    <div class="blk-1">
+      <!-- <div class="blk-2"></div> -->
+      <!-- bagian display -->
+      <input
+        type="text"
+        id="display"
+        style="
+          width: 520px;
+          height: 100px;
+          border-radius: 20px;
+          background-color: grey;
+          margin-left: 40px;
+          margin-top: 35px;
+          font-size: 60px;
+        "
+        readonly
+      />
+      <div style="margin-top: 30px; border-radius: 20px; margin-left: 35px">
+        <!-- angka yg akan di tampilkan di button beserta idnya masing masing -->
+
+        <div>
+          <button class="blk-3" onclick="angkadilayar('1')">1</button>
+          <button class="blk-3" onclick="angkadilayar('2')">2</button>
+          <button class="blk-3" onclick="angkadilayar('3')">3</button>
+          <button class="blk-3" onclick="angkadilayar('+')">+</button>
+        </div>
+        <div>
+          <button class="blk-3" onclick="angkadilayar('4')">4</button>
+          <button class="blk-3" onclick="angkadilayar('5')">5</button>
+          <button class="blk-3" onclick="angkadilayar('6')">6</button>
+          <button class="blk-3" onclick="angkadilayar('-')">-</button>
+        </div>
+        <div>
+          <button class="blk-3" onclick="angkadilayar('7')">7</button>
+          <button class="blk-3" onclick="angkadilayar('8')">8</button>
+          <button class="blk-3" onclick="angkadilayar('9')">9</button>
+          <button class="blk-3" onclick="angkadilayar('*')">*</button>
+        </div>
+        <div>
+          <button class="blk-3" onclick="angkadilayar('0')">0</button>
+          <button class="blk-3" onclick="penghapus()">C</button>
+          <button class="blk-3" onclick="calculateResult()">=</button>
+          <button class="blk-3" onclick="angkadilayar('/')">/</button>
+        </div>
+        <div>
+          <button class="blk-3" onclick="angkadilayar('%')">%</button>
+          <button class="blk-3" onclick="angkadilayar('**')">**</button>
+          <button class="blk-3" onclick="angkadilayar('<')"><</button>
+          <button class="blk-3" onclick="angkadilayar('>')">></button>
+        </div>
+      </div>
+    </div>
+    <script>
+      function angkadilayar(value) {
+        // gunanya untuk mengambil nilai yg ada di setiap angkadilayar yg berbeda sesuai tombol
+        document.getElementById("display").value += value;
+      }
+
+      function penghapus() {
+        // menghapus angka yg ada di display
+        document.getElementById("display").value = "";
+      }
+
+      function calculateResult() {
+        // menampilkan hasil perhitungan angka yg ada di display
+        try {
+          // gunanya untuk mengecek apakah ada kode yg salah atau tidak jika tidak kode akan di jalankan
+          document.getElementById("display").value = eval(
+            document.getElementById("display").value
+          );
+        } catch (error) {
+          // jika error maka akan memunculkan tulisan error pada display
+          document.getElementById("display").value = "Error";
+        }
+      }
+    </script>
+  </body>
+</html>
